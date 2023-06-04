@@ -1,13 +1,13 @@
----
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImagePolicy
-metadata:
-  name: hello-nginx
-  namespace: flux-system
-spec:
-  imageRepositoryRef:
-    name: hello-nginx
-  policy:
-    semver:
-      range: "1.0"
+# ---
+# apiVersion: image.toolkit.fluxcd.io/v1beta2
+# kind: ImagePolicy
+# metadata:
+#   name: hello-nginx
+#   namespace: flux-system
+# spec:
+#   imageRepositoryRef:
+#     name: hello-nginx
+#   policy:
+#     semver:
+#       range: "1.0"
 
