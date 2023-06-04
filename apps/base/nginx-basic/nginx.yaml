@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: novasdream/hello-nginx # {"$imagepolicy": "nginx-basic:hello-nginx"}
+          image: novasdream/hello-nginx # {"$imagepolicy": "flux-system:hello-nginx"}
           ports:
             - containerPort: 80
           resources:
