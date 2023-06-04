@@ -5,6 +5,5 @@ metadata:
   name: hello-nginx
   namespace: flux-system
 spec:
-  image: 192.168.0.120:5000/helloworld/hello-nginx
+  image: novasdream/hello-nginx
   interval: 1m0s
-  timeout: 30s
