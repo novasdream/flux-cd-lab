@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: basic-nginx
+  name: nginx-basic
+  namespace: nginx-basic
+spec:
+  replicas: 2
+  minReadySeconds: 5 # how long it should wait until it creates the next pod.
+  selector:
+    matchLabels:
+      app: basic-nginx
+  template:
+    metadata:
+      labels:
+        app: basic-nginx
+        version: "1.0"
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: configmap-vol
+          resources:
+            limits:
+              cpu: 200m
+              memory: 100Mi
+            requests:
+              cpu: 50m
+              memory: 50Mi
+      nodeSelector:
+        kubernetes.io/os: linux
+      volumes:
+        - name: configmap-vol
+          configMap:
+            name: basic-nginx-v1
