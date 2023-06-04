@@ -1,9 +1,10 @@
 ---
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: hello-nginx
   namespace: flux-system
 spec:
-  image: 192.168.0.120/helloworld/hello-nginx
+  image: 192.168.0.120:5000/helloworld/hello-nginx
   interval: 1m0s
+  timeout: 30s
