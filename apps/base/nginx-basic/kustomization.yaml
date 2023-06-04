@@ -4,4 +4,6 @@ namespace: nginx-basic
 resources:
   - namespace.yaml
   - nginx.yaml
+  - image-registry.yaml
+  - nginx-policy.yaml
   - service.yaml
