@@ -46,8 +46,6 @@ spec:
             runAsNonRoot: true
             runAsUser: 1000
       restartPolicy: Always
-      
-
 ---
 
 apiVersion: v1
