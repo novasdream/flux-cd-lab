@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: nginx-basic
 resources:
   - namespace.yaml
+  - policy.yaml
   - nginx.yaml
   - image-registry.yaml
-  - nginx-policy.yaml
   - service.yaml

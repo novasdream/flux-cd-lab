@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: novasdream/hello-nginx:1.0 # {"$imagepolicy": "flux-system:hello-nginx"}
+          image: novasdream/hello-nginx:1.0 # {"$imagepolicy": "nginx-basic:hello-nginx"}
           ports:
             - containerPort: 80
           resources:
@@ -31,7 +31,3 @@ spec:
               memory: 50Mi
       nodeSelector:
         kubernetes.io/os: linux
-      volumes:
-        - name: configmap-vol
-          configMap:
-            name: basic-nginx-v1
