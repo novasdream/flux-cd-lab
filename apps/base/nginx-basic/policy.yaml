@@ -8,4 +8,4 @@ spec:
     name: hello-nginx
   policy:
     semver:
-      range: 1.x
+      range: '>=1.0.0'
