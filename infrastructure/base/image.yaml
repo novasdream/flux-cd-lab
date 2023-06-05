@@ -3,7 +3,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
   name: hello-nginx
-  namespace: flux-system
+  namespace: nginx-basic
 spec:
   image: novasdream/hello-nginx
   interval: 1m0s

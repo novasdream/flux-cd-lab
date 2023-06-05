@@ -6,3 +6,4 @@ resources:
   - policy.yaml
   - nginx.yaml
   - service.yaml
+  - flux-system-automation.yaml
