@@ -2,8 +2,8 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
 metadata:
-  name: nginx-basic
-  namespace: nginx-basic
+  name: flux-system
+  namespace: flux-system
 spec:
   git:
     checkout:
@@ -21,6 +21,6 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./cluster/staging/
+    path: ./apps/base/nginx-basic
     strategy: Setters
 
