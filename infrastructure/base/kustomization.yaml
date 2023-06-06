@@ -4,3 +4,5 @@ resources:
   - ./image.yaml
   - ./policy.yaml
   - ./flux-system-automation.yaml
+  - ./grafana
+  - ./prometheus
