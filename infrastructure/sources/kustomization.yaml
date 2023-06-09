@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - bitnami.yaml
-  - mic.yaml
   - jetstack.yaml
   - linkerd.yaml
   - ft-charts.yaml
