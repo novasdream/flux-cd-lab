@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: flux-system
+resources:
+  - bitnami.yaml
+  - azure-workload-id.yaml
+  - mic.yaml
+  - jetstack.yaml
+  - linkerd.yaml
+  - ft-charts.yaml
+  # - podinfo.yaml

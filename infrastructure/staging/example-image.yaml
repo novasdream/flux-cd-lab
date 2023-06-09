@@ -1,0 +1,27 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: example-dotnet
+  namespace: flux-system
+spec:
+  image: fintagcore.azurecr.io/example-dotnet
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: example-dotnet
+  namespace: flux-system
+  annotations:
+    purpose: test pipeline semver behavior
+spec:
+  policy: 
+    numerical:
+      order: asc
+  filterTags:
+    extract: $buildNumber
+    pattern: '^[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+-(?P<buildNumber>[0-9]+)$'
+  imageRepositoryRef:
+    name: example-dotnet
+

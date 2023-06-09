@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+  labels:
+    dashboard: yes
+  annotations:
+    cert-manager.io/cluster-issuer: clusterissuer
+    appgw.ingress.kubernetes.io/use-private-ip: "true"
+    appgw.ingress.kubernetes.io/backend-path-prefix: /
+    appgw.ingress.kubernetes.io/backend-protocol: "https"
+    appgw.ingress.kubernetes.io/backend-hostname: "k8s-dash.foro.io"
+    appgw.ingress.kubernetes.io/health-probe-hostname: "k8s-dash.foro.io"
+    appgw.ingress.kubernetes.io/health-probe-port: "8443"
+    appgw.ingress.kubernetes.io/health-probe-path: "/"
+    appgw.ingress.kubernetes.io/health-probe-timeout: "20"
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - http:
+      paths:
+      - path: /*
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port:
+              number: 8443
+  tls:
+  - secretName: k8s-ingress-dashboard-cert
+    hosts: []
