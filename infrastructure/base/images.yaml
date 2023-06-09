@@ -1,4 +1,15 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: hello-nginx
+  namespace: flux-system
+spec:
+  image: novasdream/hello-nginx
+  interval: 1m0s
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
   name: hello-nginx
@@ -6,6 +17,3 @@ metadata:
 spec:
   imageRepositoryRef:
     name: hello-nginx
-  policy:
-    semver:
-      range: '>=1.0.0'
