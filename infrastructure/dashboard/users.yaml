@@ -20,20 +20,6 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: kube-dash-user-can-patch-fintag
-  namespace: fintag
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: can-patch
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard-user
-  namespace: kubernetes-dashboard
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
   name: kube-dash-user-can-patch-linkerd
   namespace: linkerd
 roleRef:
