@@ -1,0 +1,63 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources: 
+  - rbac.yaml
+  - ../base
+patches:
+- target:
+    version: v1beta1
+    group: image.toolkit.fluxcd.io
+    kind: ImageUpdateAutomation
+    name: .*
+  patch: |-
+    - op: add
+      path: /spec/update/path
+      value: ./apps/development
+    - op: add
+      path: /spec/git/checkout/ref/branch
+      value: development
+- target:
+    version: v2beta1
+    group: helm.toolkit.fluxcd.io
+    kind: HelmRelease
+    name: aad-pod-identity
+    namespace: kube-system
+  patch: |-
+    - op: add
+      path: /spec/values/azureIdentities/acrId/resourceID
+      value: /subscriptions/c8372520-b65a-444f-b090-5db0325b0456/resourcegroups/development/providers/Microsoft.ManagedIdentity/userAssignedIdentities/development-k8s-id
+    - op: add
+      path: /spec/values/azureIdentities/acrId/clientID
+      value: 3e95646f-92d1-417f-b005-e29bee37d1ae
+    - op: add
+      path: /spec/values/azureIdentities/certMan/resourceID
+      value: /subscriptions/c8372520-b65a-444f-b090-5db0325b0456/resourcegroups/development/providers/Microsoft.ManagedIdentity/userAssignedIdentities/development-cert-manager-dns01
+    - op: add
+      path: /spec/values/azureIdentities/certMan/clientID
+      value: 0bb68f71-07d9-4fd9-a276-502b46556e1d
+- target:
+    version: v1
+    group: networking.k8s.io
+    kind: Ingress
+    name: "web-ingress"
+  patch: |-
+    - op: add
+      path: /spec/rules/0/host
+      value: linkerd.development.fintag-core.net            
+    - op: add
+      path: /spec/tls/0/hosts
+      value: 
+        - linkerd.development.fintag-core.net            
+- target:
+    version: v1
+    group: networking.k8s.io
+    kind: Ingress
+    name: "kubernetes-dashboard"
+  patch: |-
+    - op: add
+      path: /spec/rules/0/host
+      value: k8s.development.fintag-core.net            
+    - op: add
+      path: /spec/tls/0/hosts
+      value: 
+        - k8s.development.fintag-core.net            

@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: aad-pod-identity
+spec:
+  releaseName: aad-pod-identity
+  chart:
+    spec:
+      chart: aad-pod-identity
+      version: "4.1.11"
+      sourceRef:
+        kind: HelmRepository
+        name: aad-pod-identity 
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  values:
+    azureIdentities:
+      acrId:
+        name: acr-azure
+        namespace: flux-system
+        binding:
+          name: acr-azure-binding
+          selector: acr-azure
+        clientPassword:
+          name: acr-creds
+          namespace: flux-system
+      certMan:
+        name: certman-identity
+        namespace: cert-manager # change to your preferred namespace
+        type: 0
+        binding:
+          name: certman-id-binding
+          selector: certman-label
+
+

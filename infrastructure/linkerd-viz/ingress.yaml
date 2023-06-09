@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  namespace: linkerd-viz
+  labels:
+    dashboard: yes
+  annotations:
+    cert-manager.io/cluster-issuer: clusterissuer
+    appgw.ingress.kubernetes.io/use-private-ip: "true"
+    appgw.ingress.kubernetes.io/backend-path-prefix: /
+    appgw.ingress.kubernetes.io/backend-protocol: "http"
+    appgw.ingress.kubernetes.io/backend-hostname: "web.linkerd-viz.svc.cluster.local"
+    appgw.ingress.kubernetes.io/health-probe-hostname: "web.linkerd-viz.svc.cluster.local"
+    appgw.ingress.kubernetes.io/health-probe-port: "8084"
+    appgw.ingress.kubernetes.io/health-probe-path: "/namespaces"
+    appgw.ingress.kubernetes.io/health-probe-timeout: "20"
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 8084
+  tls:
+  - secretName: linkerd-dashboard-cert
+    hosts: []

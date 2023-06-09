@@ -1,0 +1,63 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard-users
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubernetes-dashboard-users
+subjects:
+- kind: Group
+  name: eed962bf-d72e-41f6-aa7b-5081e61e55f3
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: azure-dev-can-patch
+  namespace: fintag
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: can-patch
+subjects:
+- kind: Group
+  name: eed962bf-d72e-41f6-aa7b-5081e61e55f3
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: azure-dev-can-patch-linkerd
+  namespace: linkerd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: can-patch
+subjects:
+- kind: Group
+  name: eed962bf-d72e-41f6-aa7b-5081e61e55f3
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: azure-dev-can-patch-linkerd-viz
+  namespace: linkerd-viz
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: can-patch
+subjects:
+- kind: Group
+  name: eed962bf-d72e-41f6-aa7b-5081e61e55f3
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: azure-dev-can-get-dash-secret
+  namespace: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kubernetes-dashboard-secret-access
+subjects:
+- kind: Group
+  name: eed962bf-d72e-41f6-aa7b-5081e61e55f3

@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease 
+metadata:
+  name: workload-id
+  namespace: kube-system
+spec:
+  releaseName: workload-id
+  chart:
+    spec:
+      chart: workload-identity-webhook
+      version: "0.11.0"
+      sourceRef:
+        kind: HelmRepository
+        name: azure-workload-identity
+        namespace: flux-system
+  interval: 5m
+  install:
+    remediation:
+      retries: 10
+  rollback:
+    timeout: 5m
+    disableWait: false
+    disableHooks: false
+    disableWaitForJobs: false
+    recreate: true
+    force: true
+    cleanupOnFail: true
+  values:
+    azureTenantID: "4d4dcfda-d925-4d37-9c0c-4a207d37a4b1"

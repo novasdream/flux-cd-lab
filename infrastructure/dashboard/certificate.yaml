@@ -1,0 +1,25 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: k8s-dash-cert
+  namespace: kubernetes-dashboard
+spec:
+  # Secret names are always required.
+  secretName: kubernetes-dashboard-certs
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  commonName: k8s-dash.foro.io
+  subject:
+    organizations:
+      - fintag 
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  dnsNames:
+    - k8s-dash.foro.io
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+    group: cert-manager.io
