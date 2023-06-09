@@ -5,7 +5,7 @@ resources:
   - hello-nginx.yaml
   - image_update.yaml
   - ../cert-manager
-  - ../dashboard
+  # - ../dashboard
   - ../jaeger
   - ../linkerd
   - ../linkerd-viz
