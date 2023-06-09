@@ -5,5 +5,4 @@ resources:
   - bitnami.yaml
   - jetstack.yaml
   - linkerd.yaml
-  - ft-charts.yaml
   # - podinfo.yaml
