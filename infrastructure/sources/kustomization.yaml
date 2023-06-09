@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - bitnami.yaml
-  - azure-workload-id.yaml
   - mic.yaml
   - jetstack.yaml
   - linkerd.yaml
