@@ -6,7 +6,7 @@ resources:
   - image_update.yaml
   - ../cert-manager
   # - ../dashboard
-  - ../jaeger
+  # - ../jaeger
   - ../linkerd
   - ../linkerd-viz
   - ../sources

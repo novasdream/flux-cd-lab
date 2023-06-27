@@ -4,7 +4,7 @@ metadata:
   name: web-ingress
   namespace: linkerd-viz
   labels:
-    dashboard: yes
+    dashboard: "yes"
   annotations:
     cert-manager.io/cluster-issuer: clusterissuer
     appgw.ingress.kubernetes.io/use-private-ip: "true"
