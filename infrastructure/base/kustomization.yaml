@@ -4,9 +4,9 @@ resources:
   - linkerd.yaml
   - hello-nginx.yaml
   - image_update.yaml
-  - ../cert-manager
+  # - ../cert-manager
   # - ../dashboard
   # - ../jaeger
   - ../linkerd
-  - ../linkerd-viz
+  # - ../linkerd-viz
   - ../sources
