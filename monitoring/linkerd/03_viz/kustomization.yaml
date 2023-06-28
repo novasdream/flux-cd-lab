@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: linkerd-viz
+  namespace: linkerd-viz
+resources:
+  - linkerd-viz.yaml
