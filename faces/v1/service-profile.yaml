@@ -1,0 +1,37 @@
+### ServiceProfile for color.faces ###
+apiVersion: linkerd.io/v1alpha2
+kind: ServiceProfile
+metadata:
+  creationTimestamp: null
+  name: color.faces.svc.cluster.local
+  namespace: faces
+spec:
+  routes:
+  - condition:
+      method: GET
+      pathRegex: /
+    name: GET /
+---
+apiVersion: linkerd.io/v1alpha2
+kind: ServiceProfile
+metadata:
+  name: face.faces.svc.cluster.local
+  namespace: faces
+spec:
+  routes:
+  - condition:
+      method: GET
+      pathRegex: /.*
+    name: GET /.*
+---
+apiVersion: linkerd.io/v1alpha2
+kind: ServiceProfile
+metadata:
+  name: smiley.faces.svc.cluster.local
+  namespace: faces
+spec:
+  routes:
+  - condition:
+      method: GET
+      pathRegex: /
+    name: GET /
