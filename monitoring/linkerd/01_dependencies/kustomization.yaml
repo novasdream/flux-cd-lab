@@ -6,6 +6,7 @@ metadata:
 configurations:
   - kustomizeconfig.yaml
 resources:
+  - rbac.yaml
   - sealed-secret.yaml
   - linkerd-certs.yaml
   - linkerd-crds.yaml
