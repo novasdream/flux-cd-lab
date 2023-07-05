@@ -21,7 +21,7 @@ spec:
         - name: nginx
           image: novasdream/hello-nginx:1.1.7 # {"$imagepolicy": "flux-system:hello-nginx"}
           ports:
-            - containerPort: 8080
+            - containerPort: 3000
           resources:
             limits:
               cpu: 200m
