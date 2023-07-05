@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-svc
+  name: tenant
 spec:
   type: LoadBalancer
   selector:
-    app: basic-nginx
+    app: tenant
   ports:
     - protocol: TCP
       port: 80
