@@ -6,7 +6,7 @@ metadata:
   name: tenant
   namespace: fintag
 spec:
-  replicas: 2
+  replicas: 1
   minReadySeconds: 5 # how long it should wait until it creates the next pod.
   selector:
     matchLabels:
@@ -21,7 +21,7 @@ spec:
         - name: nginx
           image: novasdream/hello-nginx:1.1.7 # {"$imagepolicy": "flux-system:hello-nginx"}
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             limits:
               cpu: 200m
